@@ -9,6 +9,12 @@ public class ChatMessage extends AbstractMessage {
     }
 
     public int getType() {
-        return Message.CHAT;
+        if(MESSAGE.equals("time")||MESSAGE.equals("Time")||MESSAGE.equals("time?")||MESSAGE.equals("Time?"))
+        {
+            return Message.TIME;
+        }
+        else
+            return Message.CHAT;
+    
     }
 }
