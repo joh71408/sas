@@ -3,8 +3,13 @@ package edu.fgu.dclab;
 import java.io.*;
 import java.net.Socket;
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Servant implements Runnable {
+    Date date =new Date();
+    SimpleDateFormat sim=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    String time=sim.format(date);
     private ObjectOutputStream out = null;
     private String source = null;
 
@@ -52,6 +57,9 @@ public class Servant implements Runnable {
                     ));
                 }
 
+                break;
+             case Message.TIME:
+                this.write(new ChatMessage("目前時間",MessageFormat.format(time,this.source)));
                 break;
 
             default:
